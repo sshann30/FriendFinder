@@ -19,3 +19,7 @@ module.exports = function(app) {
     },
 },
 // HOW TO ADD FRIENDS AND THEIR STATS HERE
+
+// add friends
+// compare friends and their scores
+// push BB player u r most like
