@@ -16,10 +16,6 @@
 //     // Home page
 
 
-
-_______________________________________________________________
-
-
 var path = require("path");
 
 module.exports = function(app) {
@@ -31,7 +27,7 @@ module.exports = function(app) {
   app.get("/survey", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/survey.html"));
   });
-  
+
 // failsafe
 // if someone goes to any other page, they get sent to home
   app.get("*", function(req, res) {

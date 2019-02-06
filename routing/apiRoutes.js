@@ -24,9 +24,8 @@
 // compare friends and their scores
 // push BB player u r most like
 
-__________________________
 
-var path = require("path");
+// var path = require("path");
 var friends = require("../data/friends");
 
 module.exports = function (app) {

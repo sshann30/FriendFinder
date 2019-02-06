@@ -1,5 +1,8 @@
+// do i need some version of "module.exports = friendsArray;" at the top?
+
 // Array pf friends and their res for each question
-var playersArray = [
+
+var friendsArray = [
 	{
 		name: 'Mark McGwire',
 		photo: 'https://www.trbimg.com/img-5acd25db/turbine/ct-spt-mark-mcgwire-banned-substances-20180410',
@@ -158,5 +161,8 @@ var playersArray = [
 			'2',
 			'1'
         ]}];
-        
+
 // how to link results and this for comparision?
+module.exports = friendsArray;
+// this right?
+console.log (friendsArray);

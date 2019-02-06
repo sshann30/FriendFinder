@@ -1,8 +1,3 @@
-<!-- why does this have to be a seperate html file??????????????? -->
-<!-- why does this have to be a seperate html file??????????????? -->
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +14,7 @@
         <link rel="stylesheet" href="style.css">
 </head>
 
-
+<div class="container">
 <div class="jumbotron">
     <div class="jumbotron">
             <div class="container text-center">
@@ -38,7 +33,7 @@
                    
     </div>
 </main>
-<!-- everything above is in home.html WHY 2 HTMLS IN STEPS OF HOW 2 MAKE THIS>??????? -->
+
     <form>
             <div class="form-group">
                 <label for="Name">Name</label>
@@ -48,6 +43,7 @@
                     <label for="Photo of youself">Photo</label>
                     <input type="Photo" class="form-control" id="Photo"  placeholder="Enter the link of a photo of yourself">
                     </div>
+                
     </form>
                        
 </div>            
@@ -71,7 +67,7 @@
 <div class="input-field col s12">
     <h3>Question 2</h3>
     <h5>You prefer going to a newer stadium than an older one</h5>
-    <select id="question1">
+    <select id="question2">
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -83,7 +79,7 @@
 <div class="input-field col s12">
     <h3>Question 3</h3>
     <h5>Blue is a better uniform color than red</h5>
-    <select id="question1">
+    <select id="question3">
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -95,7 +91,7 @@
 <div class="input-field col s12">
     <h3>Question 4</h3>
     <h5>You played multiple sports as a kid</h5>
-    <select id="question1">
+    <select id="question4">
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -107,7 +103,7 @@
 <div class="input-field col s12">
     <h3>Question 5</h3>
     <h5>Your walkup song is a rock and roll song</h5>
-    <select id="question1">
+    <select id="question5">
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -119,7 +115,7 @@
 <div class="input-field col s12">
     <h3>Question 6</h3>
     <h5>Your greatest tool is your speed</h5>
-    <select id="question1">
+    <select id="question6">
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -131,7 +127,7 @@
 <div class="input-field col s12">
     <h3>Question 7</h3>
     <h5>West Coast > East Coast</h5>
-    <select id="question1">
+    <select id="question7">
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -143,19 +139,7 @@
 <div class="input-field col s12">
     <h3>Question 8</h3>
     <h5>You would like to be a manager after your playing career</h5>
-    <select id="question1">
-        <option value="1">1 (Strongly Disagree)</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5 (Strongly Agree)</option>
-    </select>
-</div>
-<br><br>
-<div class="input-field col s12">
-    <h3>Question 8</h3>
-    <h5>Ketchup and mustard don't belong on a ballpark hotdog</h5>
-    <select id="question1">
+    <select id="question8">
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -166,8 +150,8 @@
 <br><br>
 <div class="input-field col s12">
     <h3>Question 9</h3>
-    <h5>The outfield bleachers are the best seats in the house</h5>
-    <select id="question1">
+    <h5>Ketchup and mustard don't belong on a ballpark hotdog</h5>
+    <select id="question9">
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -178,8 +162,8 @@
 <br><br>
 <div class="input-field col s12">
     <h3>Question 10</h3>
-    <h5>You would rather play in a big market town</h5>
-    <select id="question1">
+    <h5>The outfield bleachers are the best seats in the house</h5>
+    <select id="question10">
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -187,6 +171,57 @@
         <option value="5">5 (Strongly Agree)</option>
     </select>
 </div>
+<br><br>
+
+<button type="submit text center" class="btn btn-primary" id= "submit">Submit</button>
+
+<br><br>
+
+</div>
+
+<!-- BUTTON ABOVE RUNS SCRIPT FOR MATCHING U WITH A PLAYER -->
+
+
+<!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
+<script type="text/javascript">
+  
+    $(".submit").on("click", function(event) {
+      event.preventDefault();
+  
+      // grab all elements
+      var userAnswer = {
+    Name: $("#Name").val().trim(),
+    Photo: $("#Photo").val().trim(),
+    Scores: [
+    $("#question1").val(),
+    $("#question2").val(),
+    $("#question3").val(),
+    $("#question4").val(),
+    $("#question5").val(),
+    $("#question6").val(),
+    $("#question7").val(),
+    $("#question8").val(),
+    $("#question9").val(),
+    $("#question10").val()
+    ]};
+  
+      console.log(userAnswer);
+  
+      $.post("/api/friends", userAnswer,
+        function(data) {
+  
+          if (data) {
+            alert("Your match is ________");
+            // insert match of who is your match
+          }
+          else {
+            alert("Internal Error, data not poster to API/firends file path");
+          }
+        });
+    });
+  
+  </script>
 </body>
 
-<!-- DOES ANSWER TO WHICH PLAYER THEY ARE CLOSEST TO GO HERE OR IN ANOTHER HTML?????? -->
+
+<!-- I get it now. different htmls will help in the long run -->
