@@ -165,4 +165,4 @@ var friendsArray = [
 // how to link results and this for comparision?
 module.exports = friendsArray;
 // this right?
-console.log (friendsArray);
+// console.log (friendsArray);
